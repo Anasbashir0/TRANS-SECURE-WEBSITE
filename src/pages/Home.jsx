@@ -6,7 +6,7 @@ import Statistics from "../components/Statistics";
 import Subsidiaries from "../components/Subsidiaries";
 import Projects from "../components/Projects";
 import WhyChooseUs from "../components/WhyChooseUs";
-import Clients from "../components/clients";
+import Clients from "../components/Clients";
 import Testimonials from "../components/Testimonials";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";

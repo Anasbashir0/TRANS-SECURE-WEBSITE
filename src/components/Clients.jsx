@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import clients from "../data/clients";
 
-function Client() {
+function Clients() {
+  // Duplicate the array for seamless looping
+  const scrollingClients = [...clients, ...clients];
+
   return (
-    <section id="clients" className="py-28 bg-white">
+    <section id="clients" className="py-28 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
 
-        {/* Section Header */}
+        {/* Header */}
+
         <div className="text-center mb-16">
 
           <p className="uppercase tracking-[5px] text-red-600 font-bold">
@@ -24,33 +28,40 @@ function Client() {
 
         </div>
 
-        {/* Client Logos */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        {/* Logo Carousel */}
 
-          {clients.map((client, index) => (
+        <div className="relative overflow-hidden">
 
-            <motion.div
-              key={client.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.08 }}
-              viewport={{ once: true }}
-              whileHover={{
-                scale: 1.05,
-                y: -5,
-              }}
-              className="bg-slate-50 rounded-3xl shadow-md hover:shadow-xl p-8 flex items-center justify-center transition-all duration-300"
-            >
+          {/* Left Fade */}
+          <div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-white to-transparent z-10"></div>
 
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="max-h-16 object-contain grayscale hover:grayscale-0 transition duration-500"
-              />
+          {/* Right Fade */}
+          <div className="absolute right-0 top-0 h-full w-28 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-            </motion.div>
-
-          ))}
+          <motion.div
+            className="flex gap-10"
+            animate={{
+              x: ["0%", "-50%"],
+            }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              duration: 25,
+            }}
+          >
+            {scrollingClients.map((client, index) => (
+              <div
+                key={index}
+                className="min-w-[220px] h-36 bg-slate-50 rounded-3xl shadow-md hover:shadow-xl transition duration-300 flex items-center justify-center"
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="max-h-16 object-contain grayscale hover:grayscale-0 transition duration-500"
+                />
+              </div>
+            ))}
+          </motion.div>
 
         </div>
 
@@ -59,4 +70,4 @@ function Client() {
   );
 }
 
-export default Client;
+export default Clients;
