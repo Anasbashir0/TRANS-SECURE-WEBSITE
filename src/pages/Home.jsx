@@ -13,26 +13,27 @@ import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import MapSection from "../components/MapSection";
 import DownloadProfile from "../components/DownloadProfile";
+import ScrollProgress from "../components/ScrollProgress";
 
 function Home() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Services/>
-      <Statistics />
-      <Subsidiaries />
-      <Projects />
-      <WhyChooseUs />
-      <Clients />
-      <Testimonials />
-      <DownloadProfile />
-      <Contact />
-      <MapSection />
-      <Footer />
-      <BackToTop />
-    </>
+  <ScrollProgress />
+
+  <Navbar />
+  <Hero />
+  <About />
+  <Services />
+  <Statistics />
+  <Subsidiaries />
+  <Projects />
+  <WhyChooseUs />
+  <Clients />
+  <Testimonials />
+  <Contact />
+  <MapSection />
+  <Footer />
+</>
   );
 }
 
