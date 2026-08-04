@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-scroll";
+import { NavLink, Link } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import logo from "../assets/logos/logo.png";
 
@@ -18,11 +18,11 @@ function Navbar() {
   }, []);
 
   const menuItems = [
-    "home",
-    "about",
-    "services",
-    "projects",
-    "contact",
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -38,25 +38,22 @@ function Navbar() {
 
           {/* Logo */}
 
-          <div className="flex items-center gap-3 cursor-pointer">
-
+          <Link
+            to="/"
+            className="flex items-center gap-3 cursor-pointer"
+          >
             <img
               src={logo}
               alt="TRANS-SECURE Logo"
               className={`transition-all duration-500 ${
-                scroll
-                  ? "h-14"
-                  : "h-16"
+                scroll ? "h-14" : "h-16"
               }`}
             />
 
             <div>
-
               <h2
                 className={`font-bold text-xl transition duration-500 ${
-                  scroll
-                    ? "text-[#0F2E82]"
-                    : "text-white"
+                  scroll ? "text-[#0F2E82]" : "text-white"
                 }`}
               >
                 TRANS-SECURE
@@ -65,39 +62,37 @@ function Navbar() {
               <p className="text-red-600 font-bold text-xs tracking-widest">
                 LIMITED
               </p>
-
             </div>
+          </Link>
 
-          </div>
-
-          {/* Desktop Menu */}
+          {/* Desktop Navigation */}
 
           <nav className="hidden lg:flex items-center gap-10">
 
             {menuItems.map((item) => (
 
-              <Link
-                key={item}
-                to={item}
-                smooth
-                spy
-                offset={-90}
-                duration={600}
-                activeClass="text-red-600 border-b-2 border-red-600"
-                className={`cursor-pointer pb-1 border-b-2 border-transparent transition-all duration-300 ${
-                  scroll
-                    ? "text-slate-800 hover:text-red-600"
-                    : "text-white hover:text-red-400"
-                }`}
+              <NavLink
+                key={item.name}
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isActive }) =>
+                  `pb-1 border-b-2 transition-all duration-300 ${
+                    isActive
+                      ? "text-red-600 border-red-600"
+                      : scroll
+                      ? "text-slate-800 border-transparent hover:text-red-600"
+                      : "text-white border-transparent hover:text-red-400"
+                  }`
+                }
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </Link>
+                {item.name}
+              </NavLink>
 
             ))}
 
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop Button */}
 
           <button className="hidden lg:flex items-center gap-2 bg-red-600 hover:bg-red-700 transition-all duration-300 px-7 py-3 rounded-full text-white font-semibold shadow-xl hover:scale-105">
 
@@ -112,9 +107,7 @@ function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             className={`lg:hidden ${
-              scroll
-                ? "text-[#0F2E82]"
-                : "text-white"
+              scroll ? "text-[#0F2E82]" : "text-white"
             }`}
           >
             {open ? <X size={30} /> : <Menu size={30} />}
@@ -127,12 +120,9 @@ function Navbar() {
 
       <div
         className={`fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl z-50 transform transition-transform duration-500 lg:hidden ${
-          open
-            ? "translate-x-0"
-            : "translate-x-full"
+          open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-
         <div className="flex justify-between items-center p-6 border-b">
 
           <h2 className="font-bold text-[#0F2E82]">
@@ -149,18 +139,21 @@ function Navbar() {
 
           {menuItems.map((item) => (
 
-            <Link
-              key={item}
-              to={item}
-              smooth
-              spy
-              duration={600}
-              offset={-90}
+            <NavLink
+              key={item.name}
+              to={item.path}
+              end={item.path === "/"}
               onClick={() => setOpen(false)}
-              className="px-8 py-5 border-b hover:bg-gray-100 cursor-pointer font-medium text-slate-700"
+              className={({ isActive }) =>
+                `px-8 py-5 border-b transition ${
+                  isActive
+                    ? "text-red-600 bg-red-50"
+                    : "text-slate-700 hover:bg-gray-100"
+                }`
+              }
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </Link>
+              {item.name}
+            </NavLink>
 
           ))}
 
@@ -178,7 +171,7 @@ function Navbar() {
 
       </div>
 
-      {/* Mobile Overlay */}
+      {/* Overlay */}
 
       {open && (
         <div
