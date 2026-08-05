@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Services from "../components/Services";
@@ -9,7 +8,6 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import Clients from "../components/Clients";
 import Testimonials from "../components/Testimonials";
 import Contact from "../components/Contact";
-import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import MapSection from "../components/MapSection";
 import DownloadProfile from "../components/DownloadProfile";
@@ -20,8 +18,7 @@ function Home() {
     <>
   <ScrollProgress />
 
-  <Navbar />
-  <Hero />
+   <Hero />
   <About />
   <Services />
   <Statistics />
@@ -32,8 +29,7 @@ function Home() {
   <Testimonials />
   <Contact />
   <MapSection />
-  <Footer />
-</>
+ </>
   );
 }
 

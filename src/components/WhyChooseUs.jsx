@@ -13,6 +13,8 @@ function WhyChooseUs() {
             Why Choose Us
           </p>
 
+          <div className="w-20 h-1 bg-red-600 rounded-full mx-auto mt-6"></div>
+
           <h2 className="text-5xl font-bold mt-5 text-slate-900">
             Building Trust Through Excellence
           </h2>

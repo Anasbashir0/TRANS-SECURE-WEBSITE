@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/logos/logo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
+
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +21,11 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const menuItems = [
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
+
+  const links = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
@@ -25,161 +33,138 @@ function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
+  const navbarSolid = !isHome || scroll;
+
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scroll
-            ? "bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-200 py-3"
-            : "bg-transparent py-6"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-8">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        navbarSolid
+          ? "bg-white shadow-lg py-3"
+          : "bg-transparent py-6"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
 
-          {/* Logo */}
+        {/* Logo */}
 
-          <Link
-            to="/"
-            className="flex items-center gap-3 cursor-pointer"
-          >
-            <img
-              src={logo}
-              alt="TRANS-SECURE Logo"
-              className={`transition-all duration-500 ${
-                scroll ? "h-14" : "h-16"
-              }`}
-            />
-
-            <div>
-              <h2
-                className={`font-bold text-xl transition duration-500 ${
-                  scroll ? "text-[#0F2E82]" : "text-white"
-                }`}
-              >
-                TRANS-SECURE
-              </h2>
-
-              <p className="text-red-600 font-bold text-xs tracking-widest">
-                LIMITED
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-
-          <nav className="hidden lg:flex items-center gap-10">
-
-            {menuItems.map((item) => (
-
-              <NavLink
-                key={item.name}
-                to={item.path}
-                end={item.path === "/"}
-                className={({ isActive }) =>
-                  `pb-1 border-b-2 transition-all duration-300 ${
-                    isActive
-                      ? "text-red-600 border-red-600"
-                      : scroll
-                      ? "text-slate-800 border-transparent hover:text-red-600"
-                      : "text-white border-transparent hover:text-red-400"
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-
-            ))}
-
-          </nav>
-
-          {/* Desktop Button */}
-
-          <button className="hidden lg:flex items-center gap-2 bg-red-600 hover:bg-red-700 transition-all duration-300 px-7 py-3 rounded-full text-white font-semibold shadow-xl hover:scale-105">
-
-            Get a Quote
-
-            <ArrowRight size={18} />
-
-          </button>
-
-          {/* Mobile Button */}
-
-          <button
-            onClick={() => setOpen(!open)}
-            className={`lg:hidden ${
-              scroll ? "text-[#0F2E82]" : "text-white"
+        <NavLink
+          to="/"
+          className="flex items-center gap-3"
+        >
+          <img
+            src={logo}
+            alt="TRANS-SECURE"
+            className={`h-14 rounded-md transition-all duration-300 ${
+              navbarSolid ? "shadow-md" : ""
             }`}
-          >
-            {open ? <X size={30} /> : <Menu size={30} />}
-          </button>
+          />
 
-        </div>
-      </header>
+          <div>
+            <h2
+              className={`text-xl font-bold transition-colors duration-300 ${
+                navbarSolid
+                  ? "text-[#0F2E82]"
+                  : "text-white"
+              }`}
+            >
+              TRANS-SECURE
+            </h2>
 
-      {/* Mobile Menu */}
+            <p className="text-xs font-bold text-red-600">
+              LIMITED
+            </p>
+          </div>
+        </NavLink>
 
-      <div
-        className={`fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl z-50 transform transition-transform duration-500 lg:hidden ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex justify-between items-center p-6 border-b">
+        {/* Desktop Navigation */}
 
-          <h2 className="font-bold text-[#0F2E82]">
-            MENU
-          </h2>
+        <nav className="hidden lg:flex items-center gap-10">
 
-          <button onClick={() => setOpen(false)}>
-            <X />
-          </button>
-
-        </div>
-
-        <div className="flex flex-col mt-8">
-
-          {menuItems.map((item) => (
+          {links.map((link) => (
 
             <NavLink
-              key={item.name}
-              to={item.path}
-              end={item.path === "/"}
-              onClick={() => setOpen(false)}
+              key={link.name}
+              to={link.path}
               className={({ isActive }) =>
-                `px-8 py-5 border-b transition ${
+                `font-medium transition-all duration-300 ${
                   isActive
-                    ? "text-red-600 bg-red-50"
-                    : "text-slate-700 hover:bg-gray-100"
+                    ? "text-red-600"
+                    : navbarSolid
+                    ? "text-slate-800 hover:text-red-600"
+                    : "text-white hover:text-red-400"
                 }`
               }
             >
-              {item.name}
+              {link.name}
             </NavLink>
 
           ))}
 
-        </div>
+        </nav>
 
-        <div className="p-8">
+        {/* Desktop Button */}
 
-          <button className="w-full bg-red-600 text-white py-4 rounded-full font-semibold hover:bg-red-700 transition">
+        <NavLink
+          to="/contact"
+          className="hidden lg:block bg-red-600 hover:bg-red-700 px-7 py-3 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105"
+        >
+          Request Quote
+        </NavLink>
 
-            Get a Quote
+        {/* Mobile Menu Button */}
 
-          </button>
-
-        </div>
+        <button
+          onClick={() => setOpen(!open)}
+          className={`lg:hidden transition-colors duration-300 ${
+            navbarSolid
+              ? "text-[#0F2E82]"
+              : "text-white"
+          }`}
+        >
+          {open ? <X size={30} /> : <Menu size={30} />}
+        </button>
 
       </div>
 
-      {/* Overlay */}
+      {/* Mobile Menu */}
 
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
-        />
-      )}
-    </>
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-500 ${
+          open
+            ? "max-h-96 bg-white shadow-xl"
+            : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col px-8 py-6">
+
+          {links.map((link) => (
+
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) =>
+                `py-4 border-b border-gray-100 transition-colors ${
+                  isActive
+                    ? "text-red-600 font-semibold"
+                    : "text-slate-700 hover:text-red-600"
+                }`
+              }
+            >
+              {link.name}
+            </NavLink>
+
+          ))}
+
+          <NavLink
+            to="/contact"
+            className="mt-6 bg-red-600 text-white text-center py-3 rounded-full font-semibold hover:bg-red-700 transition"
+          >
+            Request Quote
+          </NavLink>
+
+        </div>
+      </div>
+    </header>
   );
 }
 
