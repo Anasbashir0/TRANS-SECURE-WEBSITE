@@ -8,6 +8,8 @@ import WhyChooseSection from "../components/WhyChooseSection";
 
 import ProcessSection from "../components/ProcessSection";
 
+import CTASection from "../components/CTASection";
+
 function Services() {
   return (
     <>
@@ -20,6 +22,7 @@ function Services() {
       <ServicesGrid />
       <WhyChooseSection />
       <ProcessSection />
+      <CTASection />
     </>
   );
 }
