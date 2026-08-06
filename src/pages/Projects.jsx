@@ -1,10 +1,26 @@
+import PageHero from "../components/PageHero";
+import FeaturedProject from "../components/FeaturedProject";
+
+import projectsBanner from "../assets/images/projects-banner.jpg";
+
+import ProjectsGrid from "../components/ProjectsGrid";
+
+import ProjectStandards from "../components/ProjectStandards";
+
+
 function Projects() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-5xl font-bold">
-        Projects Page
-      </h1>
-    </div>
+    <>
+      <PageHero
+        title="Our Projects"
+        subtitle="Discover some of our engineering, construction, procurement and infrastructure projects delivered with quality, professionalism and innovation."
+        backgroundImage={projectsBanner}
+      />
+
+      <FeaturedProject />
+      <ProjectsGrid />
+      <ProjectStandards />
+    </>
   );
 }
 
