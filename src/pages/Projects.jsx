@@ -7,6 +7,8 @@ import ProjectsGrid from "../components/ProjectsGrid";
 
 import ProjectStandards from "../components/ProjectStandards";
 
+import CTASection from "../components/CTASection";
+
 
 function Projects() {
   return (
@@ -20,6 +22,7 @@ function Projects() {
       <FeaturedProject />
       <ProjectsGrid />
       <ProjectStandards />
+      <CTASection />
     </>
   );
 }
