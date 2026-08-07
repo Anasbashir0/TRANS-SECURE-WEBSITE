@@ -9,11 +9,15 @@ import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ServiceDetail from "./pages/ServiceDetail";
+import ScrollToTop from "./components/ScrollToTop";
+import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
 
       <Routes>
         <Route
@@ -44,6 +48,16 @@ function App() {
         <Route
           path="*"
           element={<NotFound />}
+        />
+
+        <Route
+          path="/projects/:slug"
+          element={<ProjectDetail />}
+        />
+
+        <Route
+          path="/services/:slug"
+          element={<ServiceDetail />}
         />
       </Routes>
 

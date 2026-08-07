@@ -1,63 +1,115 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 import services from "../data/services";
 
 function Services() {
   return (
-    <section id="services" className="py-28 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="py-20 sm:py-24 lg:py-28 bg-slate-50">
 
-        <div className="text-center mb-16">
-          <p className="uppercase tracking-[5px] text-red-600 font-bold">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 xl:px-8">
+
+        {/* Section Heading */}
+
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+
+          <p className="uppercase tracking-[3px] sm:tracking-[5px] text-red-600 font-bold text-xs sm:text-sm">
             Our Services
           </p>
 
-          <h2 className="text-5xl font-bold mt-5 text-slate-900">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 sm:mt-5 text-slate-900 leading-tight">
             Comprehensive Engineering Solutions
           </h2>
 
-          <p className="text-slate-600 mt-6 max-w-2xl mx-auto">
+          <div className="w-16 sm:w-20 h-1 bg-red-600 rounded-full mx-auto mt-5 sm:mt-6"></div>
+
+          <p className="text-slate-600 mt-5 sm:mt-6 max-w-2xl mx-auto text-[15px] sm:text-base leading-7 sm:leading-8">
             We provide world-class construction, engineering, procurement,
             facility management and real estate solutions across Nigeria.
           </p>
+
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid */}
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-8">
+
           {services.map((service, index) => {
+
             const Icon = service.icon;
 
             return (
               <motion.div
-                key={service.title}
+                key={service.slug}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.6,
+                }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-3xl shadow-lg p-8 hover:shadow-2xl transition"
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-[#0F2E82] rounded-2xl flex items-center justify-center mb-6">
-                  <Icon size={30} className="text-white" />
+
+                {/* Icon */}
+
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#0F2E82] rounded-xl sm:rounded-2xl flex items-center justify-center mb-5 sm:mb-6">
+
+                  <Icon
+                    size={27}
+                    className="text-white sm:w-[30px] sm:h-[30px]"
+                  />
+
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-900">
+                {/* Title */}
+
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
                   {service.title}
                 </h3>
 
-                <p className="mt-4 text-slate-600 leading-7">
+                {/* Description */}
+
+                <p className="mt-3 sm:mt-4 text-slate-600 text-[15px] sm:text-base leading-7">
                   {service.description}
                 </p>
 
-                <button className="mt-8 flex items-center gap-2 text-red-600 font-semibold hover:gap-4 transition-all">
+                {/* Learn More */}
+
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-2 mt-6 sm:mt-8 text-red-600 font-semibold text-sm sm:text-base hover:gap-3 transition-all"
+                >
                   Learn More
-                  <ArrowRight size={18} />
-                </button>
+
+                  <ArrowRight size={17} />
+                </Link>
+
               </motion.div>
             );
           })}
+
+        </div>
+
+        {/* View All Services */}
+
+        <div className="text-center mt-10 sm:mt-14">
+
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#0F2E82] hover:bg-blue-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold shadow-lg transition-all hover:scale-[1.02]"
+          >
+            View All Services
+
+            <ArrowRight size={18} />
+          </Link>
+
         </div>
 
       </div>
+
     </section>
   );
 }

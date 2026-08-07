@@ -35,25 +35,28 @@ function ProjectStandards() {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
-      <div className="max-w-7xl mx-auto px-8">
+        {/* Section Heading */}
 
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
 
-          <p className="uppercase tracking-[5px] text-red-600 font-bold">
+          <p className="uppercase tracking-[3px] sm:tracking-[5px] text-red-600 font-bold text-xs sm:text-sm">
             OUR COMMITMENT
           </p>
 
-          <h2 className="text-5xl font-bold mt-5 text-slate-900">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 sm:mt-5 text-slate-900 leading-tight">
             Project Standards
           </h2>
 
-          <div className="w-20 h-1 bg-red-600 rounded-full mx-auto mt-6"></div>
+          <div className="w-16 sm:w-20 h-1 bg-red-600 rounded-full mx-auto mt-5 sm:mt-6"></div>
 
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Standards */}
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
 
           {standards.map((item, index) => {
 
@@ -73,23 +76,29 @@ function ProjectStandards() {
                 whileHover={{
                   y: -8,
                 }}
-                className="bg-slate-50 rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-slate-50 rounded-2xl sm:rounded-3xl p-7 sm:p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300"
               >
 
-                <div className="w-20 h-20 mx-auto rounded-full bg-[#0F2E82] flex items-center justify-center">
+                {/* Icon */}
+
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-[#0F2E82] flex items-center justify-center">
 
                   <Icon
-                    size={36}
-                    className="text-white"
+                    size={30}
+                    className="text-white sm:w-9 sm:h-9"
                   />
 
                 </div>
 
-                <h3 className="text-2xl font-bold mt-8">
+                {/* Title */}
+
+                <h3 className="text-xl sm:text-2xl font-bold mt-6 sm:mt-8 text-slate-900 leading-tight">
                   {item.title}
                 </h3>
 
-                <p className="mt-5 text-slate-600 leading-8">
+                {/* Description */}
+
+                <p className="mt-4 sm:mt-5 text-slate-600 leading-7 sm:leading-8 text-sm sm:text-base">
                   {item.description}
                 </p>
 
@@ -102,7 +111,6 @@ function ProjectStandards() {
         </div>
 
       </div>
-
     </section>
   );
 }

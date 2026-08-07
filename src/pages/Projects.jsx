@@ -1,27 +1,53 @@
 import PageHero from "../components/PageHero";
+
 import FeaturedProject from "../components/FeaturedProject";
-
-import projectsBanner from "../assets/images/projects-banner.jpg";
-
 import ProjectsGrid from "../components/ProjectsGrid";
-
 import ProjectStandards from "../components/ProjectStandards";
-
 import CTASection from "../components/CTASection";
 
+import projectsBanner from "../assets/images/projects-banner.jpg";
 
 function Projects() {
   return (
     <>
+      {/* ================================
+          PROJECT HERO
+      ================================= */}
+
       <PageHero
         title="Our Projects"
-        subtitle="Discover some of our engineering, construction, procurement and infrastructure projects delivered with quality, professionalism and innovation."
+        subtitle="Explore our construction, engineering and infrastructure projects delivered across Nigeria."
         backgroundImage={projectsBanner}
       />
 
-      <FeaturedProject />
-      <ProjectsGrid />
-      <ProjectStandards />
+      {/* ================================
+          FEATURED PROJECT
+      ================================= */}
+
+      <section className="py-12 sm:py-16 lg:py-20">
+        <FeaturedProject />
+      </section>
+
+      {/* ================================
+          PROJECTS GRID
+      ================================= */}
+
+      <section className="py-12 sm:py-16 lg:py-20">
+        <ProjectsGrid />
+      </section>
+
+      {/* ================================
+          PROJECT STANDARDS
+      ================================= */}
+
+      <section className="py-12 sm:py-16 lg:py-20">
+        <ProjectStandards />
+      </section>
+
+      {/* ================================
+          CALL TO ACTION
+      ================================= */}
+
       <CTASection />
     </>
   );

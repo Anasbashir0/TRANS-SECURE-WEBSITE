@@ -13,15 +13,34 @@ import CTASection from "../components/CTASection";
 function Services() {
   return (
     <>
+      {/* Page Hero */}
+
       <PageHero
         title="Our Services"
-        subtitle="Providing integrated engineering, construction, procurement, facility management and real estate solutions across Nigeria."
+        subtitle="Comprehensive engineering, construction and business solutions delivered with excellence."
         backgroundImage={servicesBanner}
       />
 
-      <ServicesGrid />
-      <WhyChooseSection />
-      <ProcessSection />
+      {/* Services */}
+
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <ServicesGrid />
+      </section>
+
+      {/* Why Choose Us */}
+
+      <section className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <WhyChooseSection />
+      </section>
+
+      {/* Our Process */}
+
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <ProcessSection />
+      </section>
+
+      {/* Call To Action */}
+
       <CTASection />
     </>
   );

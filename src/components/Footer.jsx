@@ -10,13 +10,17 @@ import {
   MapPin,
 } from "lucide-react";
 
+import { Link } from "react-router-dom";
+
 import logo from "../assets/logos/logo.png";
 
 function Footer() {
   return (
-    <footer className="bg-[#071A4A] text-white">
+    <footer className="bg-[#102A68] text-white">
 
-      <div className="max-w-7xl mx-auto px-8 py-20 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      {/* Main Footer */}
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 xl:px-8 py-14 sm:py-16 lg:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 xl:gap-12">
 
         {/* Company */}
 
@@ -24,38 +28,49 @@ function Footer() {
 
           <img
             src={logo}
-            alt="TRANS-SECURE Logo"
-            className="h-16 bg-white rounded-lg p-2 mb-6"
+            alt="TRANS-SECURE Limited Logo"
+            className="h-14 sm:h-16 w-auto bg-white rounded-lg p-2 mb-6"
           />
 
-          <p className="text-gray-300 leading-8">
+          <p className="text-gray-300 leading-7 sm:leading-8 text-sm sm:text-base">
             TRANS-SECURE Limited is committed to delivering innovative
             construction, engineering, procurement, facility management
             and real estate solutions with professionalism, integrity
             and excellence.
           </p>
 
-          <div className="flex gap-4 mt-8">
+          {/* Social Media */}
+
+          <div className="flex gap-3 sm:gap-4 mt-7 sm:mt-8">
+
+            {/* Facebook */}
 
             <a
               href="#"
+              aria-label="TRANS-SECURE on Facebook"
               className="w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 transition flex items-center justify-center"
             >
-              <FaFacebookF />
+              <FaFacebookF size={15} />
             </a>
 
-            <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 transition flex items-center justify-center"
-            >
-              <FaLinkedinIn />
-            </a>
+            {/* LinkedIn */}
 
             <a
               href="#"
+              aria-label="TRANS-SECURE on LinkedIn"
               className="w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 transition flex items-center justify-center"
             >
-              <FaInstagram />
+              <FaLinkedinIn size={15} />
+            </a>
+
+            {/* Instagram */}
+
+            <a
+              href="#"
+              aria-label="TRANS-SECURE on Instagram"
+              className="w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 transition flex items-center justify-center"
+            >
+              <FaInstagram size={15} />
             </a>
 
           </div>
@@ -66,30 +81,55 @@ function Footer() {
 
         <div>
 
-          <h3 className="text-2xl font-bold mb-6">
+          <h3 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">
             Quick Links
           </h3>
 
-          <ul className="space-y-4 text-gray-300">
+          <ul className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base">
 
-            <li className="hover:text-white cursor-pointer transition">
-              Home
+            <li>
+              <Link
+                to="/"
+                className="hover:text-white transition"
+              >
+                Home
+              </Link>
             </li>
 
-            <li className="hover:text-white cursor-pointer transition">
-              About
+            <li>
+              <Link
+                to="/about"
+                className="hover:text-white transition"
+              >
+                About
+              </Link>
             </li>
 
-            <li className="hover:text-white cursor-pointer transition">
-              Services
+            <li>
+              <Link
+                to="/services"
+                className="hover:text-white transition"
+              >
+                Services
+              </Link>
             </li>
 
-            <li className="hover:text-white cursor-pointer transition">
-              Projects
+            <li>
+              <Link
+                to="/projects"
+                className="hover:text-white transition"
+              >
+                Projects
+              </Link>
             </li>
 
-            <li className="hover:text-white cursor-pointer transition">
-              Contact
+            <li>
+              <Link
+                to="/contact"
+                className="hover:text-white transition"
+              >
+                Contact
+              </Link>
             </li>
 
           </ul>
@@ -100,17 +140,65 @@ function Footer() {
 
         <div>
 
-          <h3 className="text-2xl font-bold mb-6">
+          <h3 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">
             Our Services
           </h3>
 
-          <ul className="space-y-4 text-gray-300">
+          <ul className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base">
 
-            <li>Construction</li>
-            <li>Engineering</li>
-            <li>Procurement</li>
-            <li>Facility Management</li>
-            <li>Real Estate</li>
+            <li>
+              <Link
+                to="/services/construction"
+                className="hover:text-white transition"
+              >
+                Construction
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/services/engineering"
+                className="hover:text-white transition"
+              >
+                Engineering
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/services/procurement"
+                className="hover:text-white transition"
+              >
+                Procurement
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/services/facility-management"
+                className="hover:text-white transition"
+              >
+                Facility Management
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/services/real-estate"
+                className="hover:text-white transition"
+              >
+                Real Estate
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/services/project-management"
+                className="hover:text-white transition"
+              >
+                Project Management
+              </Link>
+            </li>
 
           </ul>
 
@@ -120,44 +208,69 @@ function Footer() {
 
         <div>
 
-          <h3 className="text-2xl font-bold mb-6">
+          <h3 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">
             Contact
           </h3>
 
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
 
-            <div className="flex gap-4 items-start">
+            {/* Address */}
+
+            <a
+              href="https://maps.app.goo.gl/w4JYkax72LzUiAcu8?g_st=awb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-3 sm:gap-4 items-start group"
+            >
 
               <MapPin
-                size={22}
+                size={21}
                 className="text-red-500 mt-1 flex-shrink-0"
               />
 
-              <p className="text-gray-300">
-                No. 10, suits 5, Sapele Street, off Ladoke Akintola Boulevard, Garki 2, Abuja, Nigeria.
+              <p className="text-gray-300 group-hover:text-white transition text-sm sm:text-base leading-6 sm:leading-7">
+                No. 10, Suite 5, Sapele Street,
+                Off Ladoke Akintola Boulevard,
+                Garki 2, Abuja, Nigeria.
               </p>
 
-            </div>
+            </a>
 
-            <div className="flex gap-4">
+            {/* Phone */}
 
-              <Phone className="text-red-500 mt-1" />
+            <a
+              href="tel:+2348067339660"
+              className="flex gap-3 sm:gap-4 items-center group"
+            >
 
-              <p className="text-gray-300">
+              <Phone
+                size={21}
+                className="text-red-500 flex-shrink-0"
+              />
+
+              <p className="text-gray-300 group-hover:text-white transition text-sm sm:text-base">
                 +234 806 733 9660
               </p>
 
-            </div>
+            </a>
 
-            <div className="flex gap-4">
+            {/* Email */}
 
-              <Mail className="text-red-500 mt-1" />
+            <a
+              href="mailto:info@trans-secure.com"
+              className="flex gap-3 sm:gap-4 items-center group"
+            >
 
-              <p className="text-gray-300">
+              <Mail
+                size={21}
+                className="text-red-500 flex-shrink-0"
+              />
+
+              <p className="text-gray-300 group-hover:text-white transition text-sm sm:text-base break-all">
                 info@trans-secure.com
               </p>
 
-            </div>
+            </a>
 
           </div>
 
@@ -165,23 +278,28 @@ function Footer() {
 
       </div>
 
+      {/* Bottom Bar */}
+
       <div className="border-t border-white/10">
 
-        <div className="max-w-7xl mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 xl:px-8 py-5 sm:py-6 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
 
-          <p className="text-gray-400 text-center md:text-left">
-            © {new Date().getFullYear()} TRANS-SECURE Limited. All Rights Reserved.
+          <p className="text-gray-400 text-center md:text-left text-xs sm:text-sm">
+            © {new Date().getFullYear()} TRANS-SECURE Limited.
+            All Rights Reserved.
           </p>
 
-          <div className="flex gap-6 text-gray-400 text-sm">
+          {/* Legal Links */}
 
-            <a href="#" className="hover:text-white transition">
+          <div className="flex gap-5 sm:gap-6 text-gray-400 text-xs sm:text-sm">
+
+            <span className="cursor-default">
               Privacy Policy
-            </a>
+            </span>
 
-            <a href="#" className="hover:text-white transition">
+            <span className="cursor-default">
               Terms & Conditions
-            </a>
+            </span>
 
           </div>
 

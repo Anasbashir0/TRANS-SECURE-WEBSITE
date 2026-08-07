@@ -2,7 +2,6 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Services from "../components/Services";
 import Statistics from "../components/Statistics";
-import Subsidiaries from "../components/Subsidiaries";
 import Projects from "../components/Projects";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Clients from "../components/Clients";
@@ -22,7 +21,6 @@ function Home() {
   <About />
   <Services />
   <Statistics />
-  <Subsidiaries />
   <Projects />
   <WhyChooseUs />
   <Clients />
