@@ -86,7 +86,7 @@ function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="lg:hidden ml-8 p-2 rounded-lg bg-white/90 text-[#0F2E82] shadow-md hover:bg-white transition-all duration-300"
+            className="lg:hidden ml-25 p-2 rounded-lg bg-white/90 text-[#0F2E82] shadow-md hover:bg-white transition-all duration-300"
           >
             {open ? <X size={27} /> : <Menu size={27} />}
           </button>
